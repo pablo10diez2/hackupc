@@ -2,15 +2,20 @@ package skyscanner;
 
 public class Preferences {
 
-	private String name;
+	private PreferenciaEnum name;
 	private int priority;//valor de 1 a 5, en el setter
-	//id_tipo?
 
-	private String getName() {
+	public Preferences(PreferenciaEnum name, int priority) {
+		super();
+		this.name = name;
+		this.priority = priority;
+	}
+
+	private PreferenciaEnum getName() {
 		return name;
 	}
 
-	private void setName(String name) {
+	private void setName(PreferenciaEnum name) {
 		this.name = name;
 	}
 
