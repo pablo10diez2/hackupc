@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f8fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.title {
+  text-align: center;
+  color: #007aff;
+  margin-bottom: 1.5rem;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.form-toggle button {
+  flex: 1;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-bottom 0.3s;
+}
+
+.form-toggle button.active {
+  border-bottom: 2px solid #007aff;
+  color: #007aff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.form button {
+  padding: 0.75rem;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.extras {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.extras select,
+.extras button {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: white;
+}
+
+/* Modo oscuro */
+body.dark {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+body.dark .container {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+body.dark .form input {
+  background-color: #3a3a3a;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark .form button {
+  background-color: #0a84ff;
+}
+
+.brand {
+  color: #00aaff;
+  font-weight: bold;
+}

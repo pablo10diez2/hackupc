@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f8fb;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .header-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .left, .right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .left { justify-content: flex-start; }
+  .right { justify-content: flex-end; }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .center h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #007aff;
+    font-weight: bold;
+  }
+  
+  .center p {
+    margin: 0;
+    margin-top: 0.4rem;
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+  .brand {
+    color: #00aaff;
+    font-weight: bold;
+  }  
+  
+  .main-content {
+    height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-button {
+    font-size: 2.2rem;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #005fcc;
+    transform: scale(1.05);
+  }
+  
+  button,
+  select {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+  }
+  
+  button:hover,
+  select:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* FORMULARIO MODAL */
+  .form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    z-index: 10;
+  }
+  
+  .form-container h2 {
+    margin-top: 0.5rem;
+    text-align: center;
+    color: #007aff;
+  }
+  
+  .form-container label {
+    display: block;
+    margin: 1rem 0 0.3rem;
+    font-weight: 500;
+  }
+  
+  .form-container input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .form-container button[type="submit"] {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #007aff;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-container button:hover {
+    background-color: #005fcc;
+  }
+  
+  /* Botón cancelar */
+  .cancel-button {
+    background: none;
+    border: none;
+    color: #007aff;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .cancel-button:hover {
+    text-decoration: underline;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* MODO OSCURO */
+  body.dark {
+    background-color: #1f1f1f;
+    color: white;
+  }
+  
+  body.dark .header-bar {
+    background-color: #2a2a2a;
+    border-color: #444;
+    box-shadow: none;
+  }
+  
+  body.dark .center p {
+    color: #ccc;
+  }
+  
+  body.dark .add-button {
+    background-color: #0a84ff;
+  }
+  
+  body.dark button,
+  body.dark select {
+    background-color: #3a3a3a;
+    border-color: #666;
+    color: white;
+  }
+  
+  body.dark button:hover,
+  body.dark select:hover {
+    background-color: #555;
+  }
+  
+  body.dark .form-container {
+    background-color: #2a2a2a;
+    color: white;
+  }
+  
+  body.dark .form-container input {
+    background-color: #3a3a3a;
+    color: white;
+    border-color: #555;
+  }
+  
+  body.dark .form-container button {
+    background-color: #0a84ff;
+  }
+  
+  body.dark .cancel-button {
+    color: #0a84ff;
+  }
+  

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TripMatch - Inicio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title" id="titulo"><span class="brand">Skyscanner</span> | TripMatch</h1>
+
+
+    <div class="form-toggle">
+      <button id="btn-login" class="active">Iniciar Sesión</button>
+      <button id="btn-register">Crear Cuenta</button>
+    </div>
+
+    <form id="form-login" class="form">
+      <input type="text" placeholder="DNI/NIE" id="login-dni" required />
+      <input type="password" placeholder="Contraseña" id="login-pass" required />
+      <button type="submit" id="btn-entrar">Entrar</button>
+    </form>
+
+    <form id="form-register" class="form hidden">
+      <input type="text" placeholder="Nombre" id="reg-nombre" required />
+      <input type="text" placeholder="DNI/NIE" id="reg-dni" required />
+      <input type="password" placeholder="Contraseña" id="reg-pass" required />
+      <button type="submit" id="btn-registrarse">Registrarse</button>
+    </form>
+
+    <div class="extras">
+      <select id="lang-select">
+        <option value="es">🌐 Español</option>
+        <option value="en">🌐 English</option>
+      </select>
+      <button id="dark-toggle">🌙 Modo oscuro</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

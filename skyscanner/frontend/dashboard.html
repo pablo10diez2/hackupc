@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skyscanner | TripMatch</title>
+  <link rel="stylesheet" href="style-dashboard.css" />
+</head>
+<body>
+
+  <!-- Cabecera -->
+  <header class="header-bar">
+    <div class="left">
+      <button id="logout">SALIR</button>
+    </div>
+    <div class="center">
+      <h1><span class="brand">Skyscanner</span> | TripMatch</h1>
+      <p id="welcome">¡Bienvenido, user!</p>
+    </div>
+    <div class="right">
+      <button id="dark-toggle">🌙 Modo oscuro</button>
+      <select id="lang-select">
+        <option value="es">🌐 Español</option>
+        <option value="en">🌐 English</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <button class="add-button" title="Añadir">+</button>
+
+    <!-- Formulario modal -->
+    <div id="viaje-form" class="form-container hidden">
+      <button id="cancelarFormulario" class="cancel-button">← Cancelar</button>
+      <h2 id="form-title">Crear Viaje</h2>
+      <form id="crearViaje">
+        <label for="nombreViaje" id="label-nombre">Nombre del viaje</label>
+        <input type="text" id="nombreViaje" name="nombreViaje" required />
+
+        <label for="fechaViaje" id="label-fecha">Fecha del viaje</label>
+        <input type="date" id="fechaViaje" name="fechaViaje" required />
+
+        <button type="submit" id="guardarBtn">Guardar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
