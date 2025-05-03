@@ -10,7 +10,58 @@ import java.io.FileInputStream;
 
 public class Main {
 	
-	ArrayList<Person> array = new ArrayList<>();
+	public static HashMap<String, Float> ordenarDestinos(Trip viaje, HashMap<PreferenciaEnum, Float>mapa){
+		HashMap<String, Float> mapaDestinos = new HashMap<>();
+		
+		for (String destino : viaje.getDestination()) {
+			try {
+				Scanner sc = new Scanner(new FileInputStream("preferencias.csv"));
+				
+				while (sc.hasNext()) {
+					String linea = sc.nextLine();
+					String[] campos = linea.split(",");
+					
+					String destinoViaje = campos[0];
+					
+					if(destino.equals(destinoViaje)) {
+						int seguridad = Integer.parseInt(campos[1]);
+						int costo = Integer.parseInt(campos[2]);
+						int accesibilidad = Integer.parseInt(campos[3]);
+						int clima = Integer.parseInt(campos[4]);
+						int comida = Integer.parseInt(campos[5]);
+						int cultura_arte = Integer.parseInt(campos[6]);
+						int actividades = Integer.parseInt(campos[7]);
+						int playa = Integer.parseInt(campos[8]);
+						int montana_naturaleza = Integer.parseInt(campos[9]);
+						int vida_nocturna = Integer.parseInt(campos[10]);
+						
+					}
+					
+				}		
+			} catch (FileNotFoundException e) {
+				System.out.println("Error: no se ha podido abrir el fichero " + "preferencias.csv");
+			}
+		}
+		
+		return mapaDestinos;
+	}
+	
+	public static HashMap<PreferenciaEnum, Float> preferenciaEquipo(Trip viaje){
+		HashMap<PreferenciaEnum, Float> mapa = new HashMap<>();
+		
+		int i = 0;
+		for (PreferenciaEnum e : PreferenciaEnum.values()) {
+			Float media = 0.0f;
+			for (Person persona : viaje.getPersonas()) {
+				media = media + persona.getPreferencias().get(i).getPriority();
+			}
+			media = media / viaje.getPersonas().size();
+			mapa.put(e, media);
+			i++;
+		}
+		
+		return mapa;
+	}
 	
 	public static HashMap<String, Integer> buscarDestinos(Person persona) {
 		HashMap<String, Integer> mapa = new HashMap<>();
@@ -40,8 +91,6 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		//Seguridad, Costo, Accesibilidad, Clima, Comida, Cultura_Arte, Actividades,
-		//Playa, Montana_Naturaleza, Vida_Nocturna;
 		
 		ArrayList<Preferences> preferencias1 = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
@@ -82,9 +131,23 @@ public class Main {
 		set.retainAll(mapa3.keySet());
 		set.retainAll(mapa4.keySet());
 		
+		ArrayList<Person> arrayPersonas = new ArrayList<>();
+		ArrayList<String> arrayDestinos = new ArrayList<>();
+		Trip viaje = new Trip(1, arrayDestinos, arrayPersonas);
+		
+		viaje.getPersonas().add(persona1);
+		viaje.getPersonas().add(persona2);
+		viaje.getPersonas().add(persona3);
+		viaje.getPersonas().add(persona4);
+		
 		for (String string : set) {
 			System.out.println(string);
+			viaje.getDestination().add(string);
 		}
 		
+		HashMap<PreferenciaEnum, Float> preferenciaEquipo = preferenciaEquipo(viaje);
+		for (PreferenciaEnum e : preferenciaEquipo.keySet()) {
+			System.out.println(e+": "+preferenciaEquipo.get(e));
+		}
 	}
 }

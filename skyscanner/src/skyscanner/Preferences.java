@@ -11,19 +11,19 @@ public class Preferences {
 		this.priority = priority;
 	}
 
-	private PreferenciaEnum getName() {
+	public PreferenciaEnum getName() {
 		return name;
 	}
 
-	private void setName(PreferenciaEnum name) {
+	public void setName(PreferenciaEnum name) {
 		this.name = name;
 	}
 
-	private int getPriority() {
+	int getPriority() {
 		return priority;
 	}
 
-	private void setPriority(int priority) {
+	public void setPriority(int priority) {
 		if (priority < 1 || priority > 5) {
 			throw new IllegalArgumentException("La prioridad debe ser un valor entero entre 1 y 5");
 		}
