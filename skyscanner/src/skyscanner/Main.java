@@ -69,7 +69,8 @@ public class Main {
 
 	            List<String> actividades = actividadesPorCiudad.get(destino);
 	            if (actividades != null) {
-	                System.out.println(destino + " con un " + mapaPuntuaciones.get(destino) + "% de compatibilidad...");
+	                System.out.println(destino + " con un " + mapaPuntuaciones.get(destino) + "% de compatibilidad; "
+	                		+ "\nEstas son 5 de las mejores actividades que puedes hacer en la ciudad:");
 	                for (int i = 0; i < Math.min(5, actividades.size()); i++) {
 	                    System.out.println((i + 1) + ". " + actividades.get(i));
 	                }
