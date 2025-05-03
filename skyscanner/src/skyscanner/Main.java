@@ -34,6 +34,7 @@ public class Main {
 						    puntuacion+=valor*valor2;
 						}
 						mapaDestinos.put(destinoViaje, puntuacion);
+						//Calcular valor absoluto
 					}
 				}		
 			} catch (FileNotFoundException e) {
