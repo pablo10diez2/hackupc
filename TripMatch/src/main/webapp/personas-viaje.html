@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persona Viaje | TripMatch</title>
+  <link rel="stylesheet" href="personas-viaje-style.css" />
+</head>
+<body>
+  <header class="header-bar">
+    <div class="left">
+      <button id="cancelar">SALIR</button>
+    </div>
+    <div class="center">
+      <h1><span class="brand">Skyscanner</span> | TripMatch</h1>
+      <p id="welcome">¡Vamos a completar tu viaje!</p>
+    </div>
+    <div class="right">
+      <button id="dark-toggle">🌙 Modo oscuro</button>
+      <select id="lang-select">
+        <option value="es">🌐 Español</option>
+        <option value="en">🌐 English</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="viaje-layout">
+    <section class="izquierda">
+      <button class="add-button" id="abrirFormulario">+</button>
+    </section>
+    <section class="derecha">
+      <h2>Personas añadidas</h2>
+      <ul id="lista-personas"></ul>
+      <button id="aceptar-btn" class="aceptar-button">Aceptar</button>
+    </section>
+  </main>
+
+  <div id="formularioPersona" class="form-container hidden">
+    <button id="cerrarFormulario" class="cancel-button">← Cancelar</button>
+    <h2>Añadir persona</h2>
+    <form id="form-persona">
+      <label for="nombrePersona">Nombre</label>
+      <input type="text" id="nombrePersona" required />
+
+      <label for="origenPersona">Origen</label>
+      <div style="position: relative;">
+        <input type="text" id="origenPersona" required autocomplete="off" />
+        <div id="autocomplete-list" class="autocomplete-items"></div>
+      </div>
+
+      <label for="presupuestoPersona">Presupuesto (€)</label>
+      <input type="number" id="presupuestoPersona" required />
+
+      <label>Categorías (0 a 5 estrellas)</label>
+      <div id="categorias-container"></div>
+
+      <button type="submit">Guardar persona</button>
+    </form>
+  </div>
+
+  <script src="js/personas-viaje.js"></script>
+</body>
+</html>
