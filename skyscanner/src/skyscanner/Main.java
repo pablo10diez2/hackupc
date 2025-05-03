@@ -2,9 +2,11 @@ package skyscanner;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -34,8 +36,7 @@ public class Main {
 
 	                        if (valorUsuario != null) {
 	                            puntuacion += 4 - Math.abs(valorUsuario - valorDestino);
-	                        }
-	                        
+	                        }   
 	                    }
 						puntuacion=(float) (puntuacion*2.5);//puntuacion entre 0 y 100
 						mapaDestinos.put(destinoViaje, puntuacion);
@@ -50,6 +51,38 @@ public class Main {
 		return mapaDestinos.entrySet().stream().sorted(Map.Entry.<String, Float>comparingByValue().reversed()).collect
 				(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(e1, e2) -> e1,LinkedHashMap::new));
 	}
+	public static void resultadoFinal(LinkedHashMap<String, Float> mapaPuntuaciones) {
+	    try {
+	        System.out.println("Los mejores destinos son los siguientes:\n");
+
+	        Scanner sc = new Scanner(new FileInputStream("actividadesporciudad.csv"));
+	        Map<String, List<String>> actividadesPorCiudad = new HashMap<>();
+	        while (sc.hasNext()) {
+	            String linea = sc.nextLine();
+	            String[] campos = linea.split(",");
+	            actividadesPorCiudad.put(campos[0], Arrays.asList(Arrays.copyOfRange(campos, 1, campos.length)));
+	        }
+
+	        int contador = 0;
+	        for (String destino : mapaPuntuaciones.keySet()) {
+	            if (contador >= 5) break; // Limita a 5 destinos
+
+	            List<String> actividades = actividadesPorCiudad.get(destino);
+	            if (actividades != null) {
+	                System.out.println(destino + " con un " + mapaPuntuaciones.get(destino) + "% de compatibilidad...");
+	                for (int i = 0; i < Math.min(5, actividades.size()); i++) {
+	                    System.out.println((i + 1) + ". " + actividades.get(i));
+	                }
+	            }
+	            System.out.println("\n");
+	            contador++;
+	        }
+
+	    } catch (FileNotFoundException e) {
+	        System.out.println("Error: no se ha podido abrir el fichero " + "actividadesporciudad.csv");
+	    }
+	}
+
 	
 	public static HashMap<PreferenciaEnum, Float> preferenciaEquipo(Trip viaje){
 		HashMap<PreferenciaEnum, Float> mapa = new HashMap<>();
@@ -122,9 +155,9 @@ public class Main {
 		}
 		
 		Person persona1 = new Person(1, "Pedro", "Madrid", 1, 500, preferencias1);
-		Person persona2 = new Person(2, "Paco", "Ibiza", 1, 500, preferencias2);
-		Person persona3 = new Person(3, "Sara", "Cairo", 1, 500, preferencias3);
-		Person persona4 = new Person(4, "Alberto", "Nueva York", 1, 800, preferencias4);
+		Person persona2 = new Person(2, "Paco", "Ibiza", 1, 1000, preferencias2);
+		Person persona3 = new Person(3, "Sara", "Cairo", 1, 1000, preferencias3);
+		Person persona4 = new Person(4, "Alberto", "Nueva York", 1, 1200, preferencias4);
 		
 		HashMap<String, Integer> mapa1 = buscarDestinos(persona1);
 		HashMap<String, Integer> mapa2 = buscarDestinos(persona2);
@@ -146,18 +179,19 @@ public class Main {
 		viaje.getPersonas().add(persona4);
 		
 		for (String string : set) {
-			System.out.println(string);
+//			System.out.println(string);
 			viaje.getDestination().add(string);
 		}
 		
 		HashMap<PreferenciaEnum, Float> preferenciaEquipo = preferenciaEquipo(viaje);
-		for (PreferenciaEnum e : preferenciaEquipo.keySet()) {
-			System.out.println(e+": "+preferenciaEquipo.get(e));
-		}
+//		for (PreferenciaEnum e : preferenciaEquipo.keySet()) {
+//			System.out.println(e+": "+preferenciaEquipo.get(e));
+//		}
 		
 		LinkedHashMap<String, Float> mapaPuntuaciones = ordenarDestinos(viaje, preferenciaEquipo);
-		for (String s : mapaPuntuaciones.keySet()) {
-			System.out.println(s+": "+mapaPuntuaciones.get(s));
-		}
+//		for (String s : mapaPuntuaciones.keySet()) {
+//			System.out.println(s+": "+mapaPuntuaciones.get(s));
+//		}
+		resultadoFinal(mapaPuntuaciones);
 	}
 }
