@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:usuarios.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:bdupc.db");
 
             PreparedStatement stmt = conn.prepareStatement(
                 "SELECT * FROM usuarios WHERE dni = ? AND contrasena = ?"
