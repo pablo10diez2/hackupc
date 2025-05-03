@@ -34,7 +34,8 @@ public class Main {
 						int playa = Integer.parseInt(campos[8]);
 						int montana_naturaleza = Integer.parseInt(campos[9]);
 						int vida_nocturna = Integer.parseInt(campos[10]);
-						
+						//Calcular valor absoluto
+
 					}
 					
 				}		
