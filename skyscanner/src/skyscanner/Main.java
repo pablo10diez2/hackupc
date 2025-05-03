@@ -28,16 +28,21 @@ public class Main {
 					float puntuacion = 0;
 					if(destino.equals(destinoViaje)) {
 						for (int i = 0; i < preferencias.length; i++) {
-						    PreferenciaEnum clave = preferencias[i];
-						    Float valor = mapa.get(clave);
-						    int valor2 = Integer.parseInt(campos[i+1]);
-						    puntuacion+=valor*valor2;
-						}
+	                        PreferenciaEnum clave = preferencias[i];
+	                        Float valorUsuario = mapa.get(clave);
+	                        int valorDestino = Integer.parseInt(campos[i + 1]);
+
+	                        if (valorUsuario != null) {
+	                            puntuacion += 4 - Math.abs(valorUsuario - valorDestino);
+	                        }
+	                        
+	                    }
+						puntuacion=(float) (puntuacion*2.5);//puntuacion entre 0 y 100
 						mapaDestinos.put(destinoViaje, puntuacion);
-						//Calcular valor absoluto
-					}
-				}		
-			} catch (FileNotFoundException e) {
+
+					}		
+				}
+				} catch (FileNotFoundException e) {
 				System.out.println("Error: no se ha podido abrir el fichero " + "preferencias.csv");
 			}
 		}
@@ -148,6 +153,11 @@ public class Main {
 		HashMap<PreferenciaEnum, Float> preferenciaEquipo = preferenciaEquipo(viaje);
 		for (PreferenciaEnum e : preferenciaEquipo.keySet()) {
 			System.out.println(e+": "+preferenciaEquipo.get(e));
+		}
+		
+		LinkedHashMap<String, Float> mapaPuntuaciones = ordenarDestinos(viaje, preferenciaEquipo);
+		for (String s : mapaPuntuaciones.keySet()) {
+			System.out.println(s+": "+mapaPuntuaciones.get(s));
 		}
 	}
 }
